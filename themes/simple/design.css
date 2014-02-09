@@ -30,14 +30,15 @@ section.contents {
 }
 
 h1 {
-  margin: 2pt 18pt;
-  font-size: 48pt;
+  margin: 4pt 18pt;
+  font-size: 40pt;
   font-family: 'Hiragino Kaku Gothic Std';
+  color: #3a3a38;
 }
 
 h2 {
   color: #1393aa;
-  margin: 8pt 32pt;
+  margin: 28pt 32pt 8px;
   font-size: 24pt;
   font-family: 'Hiragino Kaku Gothic Std';
 }
@@ -49,5 +50,10 @@ ul {
   font-family: 'Hiragino Kaku Gothic Pro';
 }
 
+ul li {
+  margin: 8pt 0pt;
+}
+
 .contents h1 {
 }
+

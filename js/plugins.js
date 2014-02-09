@@ -1,0 +1,4 @@
+SonicPlugins = {
+  pageEffect : {},
+}
+

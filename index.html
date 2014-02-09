@@ -1,69 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="utf-8">
 
-<title>sonic.js</title>
+  <head>
+    <meta charset="utf-8">
 
-<link href="themes/simple/design.css" rel="stylesheet" type="text/css">
+    <title>sonic.js</title>
 
-<script src="lib/jquery-2.1.0.min.js"></script>
-<script src="js/sonic.js"></script>
+    <link href="themes/simple/design.css" rel="stylesheet" type="text/css">
 
-</head>
+    <script src="lib/jquery-2.1.0.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/2d-animations.js"></script>
+    <script src="js/sonic.js"></script>
+  </head>
 
-<body>
+  <body>
 
-<section class="contents">
-  <h1>Summary</h1>
-  <h2>L1L2* scan design</h2>
-  <ul>
-    <li>A DFT for the asynchronous circuits</li>
-    <li>Circuit modification is needed to apply DFT</li>
-  </ul> 
-  <h2>Graph Bipartition</h2>
-  <ul> 
-    <li>Convert a graph to bipartite to design L1L2* scan</li>
-    <li>Tree-focused algorithm to speed-up</li>
-  </ul>
-</section>
+    <section class="contents">
+    <h1>Summary</h1>
+    <h2>L1L2* scan design</h2>
+    <ul>
+      <li>A DFT for the asynchronous circuits</li>
+      <li>Circuit modification is needed to apply DFT</li>
+    </ul> 
+    <h2>Graph Bipartition</h2>
+    <ul> 
+      <li>Convert a graph to bipartite to design L1L2* scan</li>
+      <li>Tree-focused algorithm to speed-up</li>
+    </ul>
+    </section>
 
-<section class="contents">
-  <h1>Outline</h1>
-  <ul>
-    <li>Asynchronous circuit and DFT</li>
-    <li>Designing L1L2* scan</li>
-    <li>Proposed algorithm</li>
-    <li>Experimental results</li>
-  </ul>
-</section>
+    <section class="contents" effect="test2d" duration="500ms">
+    <h1>Outline</h1>
+    <ul>
+      <li>Asynchronous circuit and DFT</li>
+      <li>Designing L1L2* scan</li>
+      <li>Proposed algorithm</li>
+      <li>Experimental results</li>
+    </ul>
+    </section>
 
-<section class="contents">
-  <h1>Circuit design technology</h1>
-  <h2>Issues of synchronous circuits</h2>
-  <ul>
-    <li>Clock-skew</li>
-    <li>The area-overhead of clock tree</li>
-  </ul>
-  <h2>Solution is using asynchronous design</h2>
-  <ul>
-    <li>Skips clock tree synthesis</li>
-  </ul>
-</section>
+    <section class="contents" effect="move_in">
+    <h1>Circuit design technology</h1>
+    <h2>Issues of synchronous circuits</h2>
+    <ul>
+      <li>Clock-skew</li>
+      <li>The area-overhead of clock tree</li>
+    </ul>
+    <h2>Solution is using asynchronous design</h2>
+    <ul>
+      <li>Skips clock tree synthesis</li>
+    </ul>
+    </section>
 
-<section class="contents">
-  <h1>Test of Asynchronous circuit</h1>
-  <h2>Challenges in test technique</h2>
-  <ul>
-    <li>No EDA tools for asynchronous circuits</li>
-  </ul>
-  <h2>Solution by using synchronous EDA tools</h2>
-  <ul>
-    <li>Uses the maturing EDA tools for synchronous circuit</li>
-    <li>L1L2* scan design provides use of synchronous tools</li>
-  </ul>
-</section>
+    <section class="contents" effect="slide_in">
+    <h1>Test of Asynchronous circuit</h1>
+    <h2>Challenges in test technique</h2>
+    <ul>
+      <li>No EDA tools for asynchronous circuits</li>
+    </ul>
+    <h2>Solution by using synchronous EDA tools</h2>
+    <ul>
+      <li>Uses the maturing EDA tools for synchronous circuit</li>
+      <li>L1L2* scan design provides use of synchronous tools</li>
+    </ul>
+    </section>
 
-</body>
+  </body>
 </html>
