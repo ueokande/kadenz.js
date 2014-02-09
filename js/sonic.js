@@ -70,11 +70,12 @@ function attrsToObj(attrs) {
   var obj = {};
   for (i = 0, len = attrs.length; i < len; ++i) {
     var it = attrs.item(i);
-    if (it.nodeName == "style" && it.nodeName == "effect" &&
-        it.nodeName == "duration") {
+    if (it.nodeName != "style" && it.nodeName != "effect" &&
+        it.nodeName != "duration") {
       obj[it.nodeName] = it.value;
     }
   }
+  return obj;
 }
 
 function nextStep() {
