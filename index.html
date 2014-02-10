@@ -15,125 +15,48 @@
   </head>
 
   <body>
-
-
     <section class="title">
-    <h1 id="hige">Introduction of sonic.js</h1>
+    <h1>Introduction of sonic.js</h1>
     <hr />
-    <ul id="hoge">
+    <ul>
       <li>http://i-beam.org/</li>
     </ul>
     </section>
 
-    <section class="outline">
-    <h1>Outline</h1>
-    <ul>
-      <li>Background</li>
-      <li>What is sonic.js?</li>
-      <li>Experimental results.</li>
-    </ul>
-    <p class="page"></p>
-    </section>
-
-    <section class="contents" effect="move_in">
-    <h1>Circuit design technology</h1>
-    <h2>Issues of synchronous circuits</h2>
-    <ul>
-      <li>Clock-skew</li>
-      <li>The area-overhead of clock tree</li>
-    </ul>
-    <h2>Solution is using asynchronous design</h2>
-    <ul>
-      <li>Skips clock tree synthesis</li>
-    </ul>
-    <p class="page"></p>
-    </section>
-
-
     <section class="contents" effect="push">
     <h1>What is sonic.js?</h1>
-    <h2>The presentation framework based on HTML</h2>
+    <h2>A presentation framework based on HTML</h2>
+    <ul>
+      <li>Cross-platform.</li>
+      <li>Gorgeous animations using HTML technology.</li>
+    </ul>
+    <h2>Why use sonic.js?</h2>
+    <ul>
+      <li>To design and modify in plain-text</li>
+      <li>To manage a project with a version control system</li>
+      <li>To use free-softwares</li>
+    </ul>
     </section>
 
     <section class="contents" effect="push">
-    <h1>Who is the target.</h1>
-    <h2>The presentation framework based on HTML</h2>
+    <h1>Easy to use</h1>
+    <ol>
+      <li>Clone project to your computer.</li>
+      <li>Edit template.</li>
+      <li>View in browser.</li>
+    </ol>
+    <p>more tutorial? see <a href="http://google.com/">tutorial.html</a></p>
     </section>
 
-    <section class="contents" effect="scale">
-    <h1>Simple Animations</h1>
-    <ul>
-      <li>You can describe an animation of the element by using <strong>animation</strong> tag and
-          <strong>keyframe</strong> tags.</li>
-      <li>A style sheet of the element will be overwritten when animation.</li>
-    </ul>
-    <code style="position:absolute; top: 45%; left: 35%">
-      <pre>
-&lt;p style="width: 48px; height: 48px;<br />
-          background-color:#fdd" id="box1"&gt;&lt;/p&gt;<br />
-&lt;p style="width: 48px; height: 48px;<br />
-          background-color:#dfd" id="box2"&gt;&lt;/p&gt;<br />
-&lt;p style="width: 48px; height: 48px;<br />
-          background-color:#ddf" id="box3"&gt;&lt;/p&gt;<br />
-&lt;animation&gt;<br />
-  &lt;keyframe target="box1" css="width: 96px"&gt;<br />
-  &lt;keyframe target="box2" css="height: 96px"&gt;<br />
-  &lt;keyframe target="box3" css="width: 96px;  height: 96px"&gt;<br />
-&lt;/animation&gt; </pre>
-    </code>
-    <p style="width: 48px;
-              height: 48px;
-              background-color:#fdd" id="box1"></p>
-    <p style="width: 48px;
-              height: 48px;
-              background-color:#dfd" id="box2"></p>
-    <p style="width: 48px;
-              height: 48px;
-              background-color:#ddf" id="box3"></p>
-    <animation>
-      <keyframe target="box1" css="width: 96px">
-      <keyframe target="box2" css="height: 96px">
-      <keyframe target="box3" css="width: 96px;  height: 96px">
-    </animation>
-    <p class="page"></p>
+    <section class="contents" effect="push">
+    <h1>Future works</h1>
+    <ol>
+      <li>Presenter Display</li>
+      <li>Arranging all slides and jumping between pages.</li>
+      <li>More animations (some browser not support 3D-transform in CSS).</li>
+      <li>More cross-platform (undecided for IE).</li>
+    </ol>
     </section>
-
-    <section class="contents" effect="scale">
-    <h1>Advanced Animations</h1>
-    <ul>
-      <li>You can transition property if you with to animate the element smoothly.</li>
-      <li>Make your animation by combining style sheet :)</li>
-    </ul>
-    <code style="position:absolute; top: 40%; left: 30%">
-      <pre>
-&lt;p style="width: 48px;<br />
-          height: 48px;<br />
-          transition-duration: 1s;<br />
-          background-color:#dfd" id="box4"&gt;&lt;/p&gt;<br />
-&lt;p style="width: 48px;<br />
-          height: 48px;<br />
-          transition-duration: 1s;<br />
-          background-color:#ddf" id="box5"&gt;&lt;/p&gt;<br />
-&lt;animation&gt;<br />
-  &lt;keyframe target="box4" css="width: 96px;<br />
-                               background-color:red"&gt;<br />
-  &lt;keyframe target="box5" css="-webkit-transform: rotate(90deg)"&gt;<br />
-&lt;/animation&gt;</pre>
-    </code>
-    <p style="width: 48px;
-              height: 48px;
-              transition-duration: 1s;
-              background-color:#dfd" id="box4"></p>
-    <p style="width: 48px;
-              height: 48px;
-              transition-duration: 1s;
-              background-color:#ddf" id="box5"></p>
-    <animation>
-      <keyframe target="box4" css="width: 96px; background-color:red">
-      <keyframe target="box5" css="-webkit-transform: rotate(90deg)">
-    </animation>
-    <p class="page"></p>
-  </section>
 
   </body>
 </html>
