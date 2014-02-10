@@ -7,7 +7,7 @@ SonicPlugins.pageEffect["dissolve"] = function (currentPage,
     nextPage.style.transitionProperty = "opacity";
     nextPage.style.transitionDuration = duration;
     nextPage.style.opacity = "1";
-  }, 1);
+  }, 0);
 }
 
 /*
@@ -23,7 +23,6 @@ SonicPlugins.pageEffect["move_in"] = function (currentPage,
                                                nextPage,
                                                duration,
                                                property) {
-  console.debug(property);
   var before = ({
     // left top
     to_right : ["-100%", "0%"],
@@ -37,11 +36,11 @@ SonicPlugins.pageEffect["move_in"] = function (currentPage,
   nextPage.style.left = before[0];
   nextPage.style.top = before[1];
   setTimeout(function() {
-    nextPage.style.transitionProperty = "left top";
+    nextPage.style.transitionProperty = "left, top";
     nextPage.style.transitionDuration = duration;
     nextPage.style.left = "0%"
     nextPage.style.top = "0%"
-  }, 1);
+  }, 0);
 }
 
 /*
@@ -60,19 +59,19 @@ SonicPlugins.pageEffect["slide_in"] = function (currentPage,
     nextPage.style.transitionProperty = "left";
     nextPage.style.transitionDuration = duration;
     nextPage.style.left = "0%"
-  }, 1);
+  }, 0);
 }
 
 /*
  * Slide-in Page Effect
  * Optional Arguments
  * * direction ..... Direction of zooming
- *     1 ... 
- *     2 ... 
- *     3 ... 
- *     4 ... 
+ *     up
+ *     down
+ *     in
+ *     out
  */
-SonicPlugins.pageEffect["zoom"] = function (currentPage,
+SonicPlugins.pageEffect["scale"] = function (currentPage,
                                             nextPage,
                                             duration,
                                             property) {
@@ -80,16 +79,16 @@ SonicPlugins.pageEffect["zoom"] = function (currentPage,
   var targetNext = true;   // A target of the animation is next slide when true
   var zoomin = true;       // Zooming is zoom-in when true
 
-  if (direction == "1") {
+  if (direction == "up") {
     targetNext = true;
     zoomin = true;
-  } else if (direction == "2") {
+  } else if (direction == "in") {
     targetNext = true;
     zoomin = false;
-  } else if (direction == "3") {
+  } else if (direction == "out") {
     targetNext = false;
     zoomin = true;
-  } else if (direction == "4") {
+  } else if (direction == "down") {
     targetNext = false;
     zoomin = false;
   }
@@ -99,31 +98,43 @@ SonicPlugins.pageEffect["zoom"] = function (currentPage,
     nextPage.style.zIndex = "1";
     nextPage.style.opacity = "0";
     if (zoomin) {
+      nextPage.style.transform = "scale(0.2,0.2)";
+      nextPage.style.mozTransform = "scale(0.2,0.2)";
       nextPage.style.webkitTransform = "scale(0.2,0.2)";
     } else {
-      nextPage.style.webkitTransform = "scale(3,3)";
+      nextPage.style.transform = "scale(3.0,3.0)";
+      nextPage.style.mozTransform = "scale(3.0,3.0)";
+      nextPage.style.webkitTransform = "scale(3.0,3.0)";
     }
   } else { // if current slide will animate
     currentPage.style.zIndex = "1";
     nextPage.style.zIndex = "0";
     currentPage.style.opacity = "1";
+    nextPage.style.transform = "scale(1,1)";
+    nextPage.style.mozTransform = "scale(1,1)";
     nextPage.style.webkitTransform = "scale(1,1)";
   }
   setTimeout(function() {
     if (targetNext) {
-      nextPage.style.transitionProperty = "opacity -webkit-transform transform";
+      nextPage.style.transitionProperty = "opacity, transform, -webkit-transform, -moz-transform";
       nextPage.style.transitionDuration = duration;
       nextPage.style.opacity = "1";
+      nextPage.style.transform = "scale(1.0,1.0)";
+      nextPage.style.mozTransform = "scale(1.0,1.0)";
       nextPage.style.webkitTransform = "scale(1.0,1.0)";
     } else {
-      currentPage.style.transitionProperty = "opacity -webkit-transform transform";
+      currentPage.style.transitionProperty = "opacity, transform, -webkit-transform, -moz-transform";
       currentPage.style.transitionDuration = duration;
       currentPage.style.opacity = "0";
       if (zoomin) {
+        currentPage.style.transform = "scale(3,3)";
+        currentPage.style.mozTransform = "scale(3,3)";
         currentPage.style.webkitTransform = "scale(3,3)";
       } else {
+        currentPage.style.transform = "scale(0.2,0.2)";
+        currentPage.style.mozTransform = "scale(0.2,0.2)";
         currentPage.style.webkitTransform = "scale(0.2,0.2)";
       }
     }
-  }, 1);
+  }, 0);
 }

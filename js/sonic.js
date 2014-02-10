@@ -27,6 +27,18 @@ window.onload = function() {
   scrollTo(0,0);
 }
 
+function neutralStyle(page) {
+  page.style.cssText = defaultStyle; 
+}
+
+function showPage(page) {
+  page.style.visibility = "visible";
+}
+
+function hidePage(page) {
+  page.style.visibility = "hidden";
+}
+
 function skipToNextPage() {
   skipToPage(Sonic.currentIndex + 1)
 }
@@ -40,9 +52,9 @@ function skipToPage(page) {
   p = Math.min(Math.max(page,0), len - 1);
   for (var i = 0; i < len; ++i) {
     if (i <= p) {
-      Sonic.pages[i].style.visibility = "visible";
+      showPage(Sonic.pages[i]);
     } else {
-      Sonic.pages[i].style.visibility = "hidden";
+      hidePage(Sonic.pages[i]);
     }
   }
   Sonic.currentIndex = p;
@@ -62,6 +74,17 @@ function animatePage(currentPage, nextPage) {
   }
   if (duration == null) {
     duration = "1000ms";
+  }
+
+  var eventNames = ["transitionEnd", "mozTransitionEnd", "webkitTransitionEnd"];
+  for (i = 0; i < eventNames.length; ++i) {
+    currentPage.addEventListener(eventNames[i], function(e) {
+      neutralStyle(currentPage);
+      hidePage(currentPage);
+    }, false );
+    nextPage.addEventListener(eventNames[i], function(e) {
+      neutralStyle(nextPage);
+    }, false );
   }
   func(currentPage, nextPage, duration, property);
 }
@@ -86,7 +109,7 @@ function nextStep() {
 
   var currentPage = Sonic.pages[Sonic.currentIndex - 1];
   var nextPage = Sonic.pages[Sonic.currentIndex];
-  nextPage.style.visibility = "visible";
+  showPage(nextPage);
   animatePage(currentPage, nextPage);
 }
 
@@ -110,3 +133,19 @@ function registerInput() {
   };
 }
 
+/* convert time specified by string to millisecond
+ * timeToMs("200ms")    // return 200
+ * timeToMs("5s")    // return 2000
+ * timeToMs("1.4s")    // return 1400
+ */
+function timeToMs(time) {
+  var ms = time.split("ms");
+  if (ms.length == 2) {
+    return ms[0];
+  }
+  var s = time.split("s");
+  if (s.length == 2) {
+    return (s[0] * 1000);
+  }
+  return 0;
+}
