@@ -14,21 +14,20 @@ SonicPlugins.pageEffect["dissolve"] = function (currentPage,
  * Move-In Page Effect
  * Optional Arguments
  * * direction ..... Direction of movement
- *     to_right  ... Left to Right
- *     to_left   ... Right to Left
- *     to_bottom ... Top to Bottom
- *     to_top    ... Bottom to Top
+ *     right  ... Left to Right
+ *     left   ... Right to Left
+ *     up ... Top to Bottom
+ *     down ... Bottom to Top
  */
 SonicPlugins.pageEffect["move_in"] = function (currentPage,
                                                nextPage,
                                                duration,
                                                property) {
   var before = ({
-    // left top
-    to_right : ["-100%", "0%"],
-    to_left : ["100%", "0%"],
-    to_bottom : ["0%", "-100%"],
-    to_top : ["0%", "100%"],
+    left  : ["100%", "0%"],
+    right : ["-100%", "0%"],
+    up    : ["0%", "100%"],
+    down  : ["0%", "-100%"],
   })[property.direction];
   if (before == null) {
     before = ["100%", "0%"];
@@ -44,21 +43,35 @@ SonicPlugins.pageEffect["move_in"] = function (currentPage,
 }
 
 /*
- * Slide-in Page Effect
+ * Pushing page effect
  */
-SonicPlugins.pageEffect["slide_in"] = function (currentPage,
-                                                nextPage,
-                                                duration,
-                                                property) {
-  currentPage.style.left = "0%"
-  nextPage.style.left = "100%"
+SonicPlugins.pageEffect["push"] = function (currentPage,
+                                            nextPage,
+                                            duration,
+                                            property) {
+  var posPrefix = {
+    left  : ["0%", "0%", "100%", "0%", "-100%", "0%", "0%", "0%"],
+    right : ["0%", "0%", "-100%", "0%", "100%", "0%", "0%", "0%"],
+    up    : ["0%", "0%", "0%", "100%", "0%", "-100%", "0%", "0%"],
+    down  : ["0%", "0%", "0%", "-100%", "0%", "100%", "0%", "0%"],
+  };
+  var pos = posPrefix[property.direction];
+  if (pos == null) {
+    pos = posPrefix["left"];
+  }
+  currentPage.style.left = pos[0];
+  currentPage.style.top= pos[1];
+  nextPage.style.left = pos[2];
+  nextPage.style.top= pos[3];
   setTimeout(function() {
-    currentPage.style.transitionProperty = "left";
+    currentPage.style.transitionProperty = "left, top";
     currentPage.style.transitionDuration = duration;
-    currentPage.style.left = "-100%"
-    nextPage.style.transitionProperty = "left";
+    currentPage.style.left = pos[4];
+    currentPage.style.top = pos[5];
+    nextPage.style.transitionProperty = "left, top";
     nextPage.style.transitionDuration = duration;
-    nextPage.style.left = "0%"
+    nextPage.style.left = pos[6];
+    nextPage.style.top = pos[7];
   }, 0);
 }
 
@@ -72,9 +85,9 @@ SonicPlugins.pageEffect["slide_in"] = function (currentPage,
  *     out
  */
 SonicPlugins.pageEffect["scale"] = function (currentPage,
-                                            nextPage,
-                                            duration,
-                                            property) {
+                                             nextPage,
+                                             duration,
+                                             property) {
   var direction = property.direction;
   var targetNext = true;   // A target of the animation is next slide when true
   var zoomin = true;       // Zooming is zoom-in when true
