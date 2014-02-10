@@ -18,19 +18,8 @@ section {
   left: 0px;
 }
 
-section.contents {
-  background-color: #cbd3c5;
-  background-image: url(bg.svg);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 72pt;
-  width: 1024px;
-  height: 768px;
-  overflow: hidden
-}
-
 h1 {
-  margin: 4pt 18pt;
+/*  margin: 4pt 18pt; */
   font-size: 40pt;
   font-family: 'Hiragino Kaku Gothic Std';
   color: #3a3a38;
@@ -38,14 +27,14 @@ h1 {
 
 h2 {
   color: #1393aa;
-  margin: 28pt 32pt 8px;
+  margin: 18pt 0pt 8px;
   font-size: 24pt;
   font-family: 'Hiragino Kaku Gothic Std';
 }
 
 ul {
   list-style-image: url("bullet.svg");
-  margin: 5pt 48pt;
+  margin: 5pt 18pt;
   font-size: 24pt;
   font-family: 'Hiragino Kaku Gothic Pro';
 }
@@ -54,10 +43,74 @@ ul li {
   margin: 8pt 0pt;
 }
 
+hr {
+  background-color: #3a3a38;
+  border: 0 none;
+  height: 4px;
+}
+
+section {
+  background-color: #cbd3c5;
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
+  padding: 12px 36px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+section.title h1 {
+  margin-top: 30%;
+}
+
+section.title ul {
+  margin-left: 0pt;
+  list-style: none;
+}
+
+section.contents {
+  background-image: url(bg.svg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 72pt;
+}
+
+section.outline {
+  background-image: url(bg.svg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 72pt;
+}
+
+section.outline ul {
+  list-style-image: none;
+  list-style-type: decimal;
+  margin-left: 64px;
+}
+
+section.outline ul li:before {
+  content: "";
+  margin-right: 12px;
+}
+section.outline ul li {
+  margin-top: 48px;
+  color: black;
+}
+
+
 .page {
   position: absolute;
   font-family: 'Hiragino Kaku Gothic Pro';
   font-size: 16pt;
   top: 2%;
   left: 95%;
+}
+
+code {
+  border-radius: 12px;
+  background-color: white;
+  padding: 32px 16px;
+  line-height: 90%;
+  font-size: 12pt;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 
   <head>
     <meta charset="utf-8">
@@ -16,28 +16,21 @@
 
   <body>
 
-    <section class="contents">
-    <h1>Summary</h1>
-    <h2>L1L2* scan design</h2>
-    <ul>
-      <li>A DFT for the asynchronous circuits</li>
-      <li>Circuit modification is needed to apply DFT</li>
-    </ul> 
-    <h2>Graph Bipartition</h2>
-    <ul> 
-      <li>Convert a graph to bipartite to design L1L2* scan</li>
-      <li>Tree-focused algorithm to speed-up</li>
+
+    <section class="title">
+    <h1 id="hige">Introduction of sonic.js</h1>
+    <hr />
+    <ul id="hoge">
+      <li>http://i-beam.org/</li>
     </ul>
-    <p class="page"></p>
     </section>
 
-    <section class="contents" effect="push" duration="1000ms" direction="down">
+    <section class="outline">
     <h1>Outline</h1>
     <ul>
-      <li>Asynchronous circuit and DFT</li>
-      <li>Designing L1L2* scan</li>
-      <li>Proposed algorithm</li>
-      <li>Experimental results</li>
+      <li>Background</li>
+      <li>What is sonic.js?</li>
+      <li>Experimental results.</li>
     </ul>
     <p class="page"></p>
     </section>
@@ -56,19 +49,91 @@
     <p class="page"></p>
     </section>
 
+
+    <section class="contents" effect="push">
+    <h1>What is sonic.js?</h1>
+    <h2>The presentation framework based on HTML</h2>
+    </section>
+
+    <section class="contents" effect="push">
+    <h1>Who is the target.</h1>
+    <h2>The presentation framework based on HTML</h2>
+    </section>
+
     <section class="contents" effect="scale">
-    <h1>Test of Asynchronous circuit</h1>
-    <h2>Challenges in test technique</h2>
+    <h1>Simple Animations</h1>
     <ul>
-      <li>No EDA tools for asynchronous circuits</li>
+      <li>You can describe an animation of the element by using <strong>animation</strong> tag and
+          <strong>keyframe</strong> tags.</li>
+      <li>A style sheet of the element will be overwritten when animation.</li>
     </ul>
-    <h2>Solution by using synchronous EDA tools</h2>
-    <ul>
-      <li>Uses the maturing EDA tools for synchronous circuit</li>
-      <li>L1L2* scan design provides use of synchronous tools</li>
-    </ul>
+    <code style="position:absolute; top: 45%; left: 35%">
+      <pre>
+&lt;p style="width: 48px; height: 48px;<br />
+          background-color:#fdd" id="box1"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px; height: 48px;<br />
+          background-color:#dfd" id="box2"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px; height: 48px;<br />
+          background-color:#ddf" id="box3"&gt;&lt;/p&gt;<br />
+&lt;animation&gt;<br />
+  &lt;keyframe target="box1" css="width: 96px"&gt;<br />
+  &lt;keyframe target="box2" css="height: 96px"&gt;<br />
+  &lt;keyframe target="box3" css="width: 96px;  height: 96px"&gt;<br />
+&lt;/animation&gt; </pre>
+    </code>
+    <p style="width: 48px;
+              height: 48px;
+              background-color:#fdd" id="box1"></p>
+    <p style="width: 48px;
+              height: 48px;
+              background-color:#dfd" id="box2"></p>
+    <p style="width: 48px;
+              height: 48px;
+              background-color:#ddf" id="box3"></p>
+    <animation>
+      <keyframe target="box1" css="width: 96px">
+      <keyframe target="box2" css="height: 96px">
+      <keyframe target="box3" css="width: 96px;  height: 96px">
+    </animation>
     <p class="page"></p>
     </section>
+
+    <section class="contents" effect="scale">
+    <h1>Advanced Animations</h1>
+    <ul>
+      <li>You can transition property if you with to animate the element smoothly.</li>
+      <li>Make your animation by combining style sheet :)</li>
+    </ul>
+    <code style="position:absolute; top: 40%; left: 30%">
+      <pre>
+&lt;p style="width: 48px;<br />
+          height: 48px;<br />
+          transition-duration: 1s;<br />
+          background-color:#dfd" id="box4"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px;<br />
+          height: 48px;<br />
+          transition-duration: 1s;<br />
+          background-color:#ddf" id="box5"&gt;&lt;/p&gt;<br />
+&lt;animation&gt;<br />
+  &lt;keyframe target="box4" css="width: 96px;<br />
+                               background-color:red"&gt;<br />
+  &lt;keyframe target="box5" css="-webkit-transform: rotate(90deg)"&gt;<br />
+&lt;/animation&gt;</pre>
+    </code>
+    <p style="width: 48px;
+              height: 48px;
+              transition-duration: 1s;
+              background-color:#dfd" id="box4"></p>
+    <p style="width: 48px;
+              height: 48px;
+              transition-duration: 1s;
+              background-color:#ddf" id="box5"></p>
+    <animation>
+      <keyframe target="box4" css="width: 96px; background-color:red">
+      <keyframe target="box5" css="-webkit-transform: rotate(90deg)">
+    </animation>
+    <p class="page"></p>
+  </section>
 
   </body>
 </html>

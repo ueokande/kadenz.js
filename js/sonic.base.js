@@ -3,20 +3,19 @@ var defaultStyle = "";
 
 var Sonic = {
   currentIndex: 0,
-  pages: []
+  pages: [],
+  keyframes: []
 };
 
 function initPages() {
-  var len = document.body.children.length;
-  for (i = 0; i < len; ++i) {
-    var ele = document.body.children[i];
-    if (ele.tagName == "SECTION" || ele.tagName == "section") {
-         Sonic.pages.push(ele);
-     } else {
-         console.warn(ele.tagName);
-     }
+  var pages = document.body.getElementsByTagName("section");
+  if (pages.length == 0) {
+    return;
   }
-  defaultStyle = ele.style.cssText;
+  for (i = 0; i < pages.length; ++i) {
+    Sonic.pages.push(pages[i]);
+  }
+  defaultStyle = Sonic.pages[0].style.cssText;
 
   for (var i = 0, l1 = Sonic.pages.length; i < l1; ++i) {
     var page = Sonic.pages[i];
@@ -29,18 +28,6 @@ function initPages() {
   }
 
   skipToPage(0);
-}
-
-function neutralStyle(page) {
-  page.style.cssText = defaultStyle;
-}
-
-function showPage(page) {
-  page.style.visibility = "visible";
-}
-
-function hidePage(page) {
-  page.style.visibility = "hidden";
 }
 
 function skipToNextPage() {
@@ -62,6 +49,40 @@ function skipToPage(page) {
     }
   }
   Sonic.currentIndex = p;
+  loadAnimations(Sonic.pages[Sonic.currentIndex]);
+}
+
+function nextStep() {
+  if (Sonic.keyframes.length == 0) {
+    if (Sonic.currentIndex >= Sonic.pages.length - 1) {
+      return;
+    }
+    Sonic.currentIndex++;
+
+    var currentPage = Sonic.pages[Sonic.currentIndex - 1];
+    var nextPage = Sonic.pages[Sonic.currentIndex];
+    showPage(nextPage);
+    animatePage(currentPage, nextPage);
+    loadAnimations(nextPage)
+  } else {
+    var key = Sonic.keyframes.shift();
+    applyAnimation(key);
+  }
+}
+
+function prevStep() {
+}
+
+function neutralStyle(page) {
+  page.style.cssText = defaultStyle;
+}
+
+function showPage(page) {
+  page.style.visibility = "visible";
+}
+
+function hidePage(page) {
+  page.style.visibility = "hidden";
 }
 
 function animatePage(currentPage, nextPage) {
@@ -105,19 +126,43 @@ function attrsToObj(attrs) {
   return obj;
 }
 
-function nextStep() {
-  if (Sonic.currentIndex >= Sonic.pages.length - 1) {
-    return;
+function applyAnimation(frame) {
+  var target = document.getElementById(frame.target);
+  if (target == null) {
+      console.warn("Target '" + frame.target + "' of the animation is not existing.");
+      return;
   }
-  Sonic.currentIndex++;
-
-  var currentPage = Sonic.pages[Sonic.currentIndex - 1];
-  var nextPage = Sonic.pages[Sonic.currentIndex];
-  showPage(nextPage);
-  animatePage(currentPage, nextPage);
+  if (frame.css != null) {
+    for (k in frame.css) {
+      target.style[k] = frame.css[k];
+    }
+  }
 }
 
-function prevStep() {
+function loadAnimations(page) {
+  Sonic.keyframes = [];
+  var animationNode = page.getElementsByTagName("animation")[0];
+  if (animationNode == null) {
+    return;
+  }
+  var keyframeNodes = animationNode.getElementsByTagName("keyframe");
+  for (i = 0; i < keyframeNodes.length; ++i) {
+    var keyNode = keyframeNodes[i];
+    var target = keyNode.getAttribute("target");
+    var css = keyNode.getAttribute("css");
+    if (target == null) {
+      console.warn("Target of the animation is not specified.");
+      continue;
+    }
+    if (css == null) {
+      console.debug("Property of the animation is not specified.");
+      continue;
+    }
+    Sonic.keyframes.push({
+      "target": target,
+      "css"   : cssToObject(css)
+    });
+  }
 }
 
 /* convert time specified by string to millisecond
@@ -135,4 +180,15 @@ function timeToMs(time) {
     return (s[0] * 1000);
   }
   return 0;
+}
+
+function cssToObject(css) {
+  var ret = {};
+  css = css.replace(/\s/g, '');
+  var attrs = css.split(';');
+  for (var i = 0; i < attrs.length; ++i) {
+    var entry = attrs[i].split(':');
+    ret[entry[0]] = entry[1];
+  }
+  return ret;
 }
