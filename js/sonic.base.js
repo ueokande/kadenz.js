@@ -1,14 +1,12 @@
-
 var defaultDuration = 2000;
 var defaultStyle = "";
-var testele;
 
 var Sonic = {
   currentIndex: 0,
   pages: []
 };
 
-window.onload = function() {
+function initPages() {
   var len = document.body.children.length;
   for (i = 0; i < len; ++i) {
     var ele = document.body.children[i];
@@ -19,12 +17,18 @@ window.onload = function() {
      }
   }
   defaultStyle = ele.style.cssText;
-  testele = ele;
 
-  registerInput();
+  for (var i = 0, l1 = Sonic.pages.length; i < l1; ++i) {
+    var page = Sonic.pages[i];
+    for (var j = 0, l2 = page.children.length; j < l2; ++j) {
+      var ele = page.children[j];
+      if (ele.classList.contains('page')) {
+        ele.innerHTML = i + 1;
+      }
+    }
+  }
 
   skipToPage(0);
-  scrollTo(0,0);
 }
 
 function neutralStyle(page) {

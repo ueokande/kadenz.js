@@ -54,6 +54,10 @@ ul li {
   margin: 8pt 0pt;
 }
 
-.contents h1 {
+.page {
+  position: absolute;
+  font-family: 'Hiragino Kaku Gothic Pro';
+  font-size: 16pt;
+  top: 2%;
+  left: 95%;
 }
-

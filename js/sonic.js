@@ -1,20 +1,7 @@
 window.onload = function() {
-  var len = document.body.children.length;
-  for (i = 0; i < len; ++i) {
-    var ele = document.body.children[i];
-    if (ele.tagName == "SECTION" || ele.tagName == "section") {
-         Sonic.pages.push(ele);
-     } else {
-         console.warn(ele.tagName);
-     }
-  }
-  defaultStyle = ele.style.cssText;
-  testele = ele;
+  initPages();
 
   registerInput();
-
-  skipToPage(0);
-  scrollTo(0,0);
 }
 
 function registerInput() {
