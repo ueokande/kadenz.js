@@ -1,4 +1,4 @@
-SonicPlugins.pageEffect["dissolve"] = function (currentPage,
+Kadenz.Plugins.pageEffects["dissolve"] = function (currentPage,
                                                 nextPage,
                                                 duration,
                                                 property) {
@@ -19,7 +19,7 @@ SonicPlugins.pageEffect["dissolve"] = function (currentPage,
  *     up ... Top to Bottom
  *     down ... Bottom to Top
  */
-SonicPlugins.pageEffect["move_in"] = function (currentPage,
+Kadenz.Plugins.pageEffects["move_in"] = function (currentPage,
                                                nextPage,
                                                duration,
                                                property) {
@@ -45,7 +45,7 @@ SonicPlugins.pageEffect["move_in"] = function (currentPage,
 /*
  * Pushing page effect
  */
-SonicPlugins.pageEffect["push"] = function (currentPage,
+Kadenz.Plugins.pageEffects["push"] = function (currentPage,
                                             nextPage,
                                             duration,
                                             property) {
@@ -84,7 +84,7 @@ SonicPlugins.pageEffect["push"] = function (currentPage,
  *     in
  *     out
  */
-SonicPlugins.pageEffect["scale"] = function (currentPage,
+Kadenz.Plugins.pageEffects["scale"] = function (currentPage,
                                              nextPage,
                                              duration,
                                              property) {

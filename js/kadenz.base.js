@@ -1,11 +1,16 @@
-var defaultDuration = 2000;
-var defaultStyle = "";
+Kadenz = {
+  Plugins : {
+    pageEffects : {}
+  },
 
-var Sonic = {
   currentIndex: 0,
   pages: [],
-  keyframes: []
-};
+  keyframes: [],
+  defaultStyle: "",
+
+  defaultDuration: 1000
+}
+
 
 function initPages() {
   var pages = document.body.getElementsByTagName("section");
@@ -13,12 +18,12 @@ function initPages() {
     return;
   }
   for (i = 0; i < pages.length; ++i) {
-    Sonic.pages.push(pages[i]);
+    Kadenz.pages.push(pages[i]);
   }
-  defaultStyle = Sonic.pages[0].style.cssText;
+  Kadenz.defaultStyle = Kadenz.pages[0].style.cssText;
 
-  for (var i = 0, l1 = Sonic.pages.length; i < l1; ++i) {
-    var page = Sonic.pages[i];
+  for (var i = 0, l1 = Kadenz.pages.length; i < l1; ++i) {
+    var page = Kadenz.pages[i];
     for (var j = 0, l2 = page.children.length; j < l2; ++j) {
       var ele = page.children[j];
       if (ele.classList.contains('page')) {
@@ -31,41 +36,41 @@ function initPages() {
 }
 
 function skipToNextPage() {
-  skipToPage(Sonic.currentIndex + 1)
+  skipToPage(Kadenz.currentIndex + 1)
 }
 
 function skipToPrevPage() {
-  skipToPage(Sonic.currentIndex - 1)
+  skipToPage(Kadenz.currentIndex - 1)
 }
 
 function skipToPage(page) {
-  var len = Sonic.pages.length;
+  var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
   for (var i = 0; i < len; ++i) {
     if (i <= p) {
-      showPage(Sonic.pages[i]);
+      showPage(Kadenz.pages[i]);
     } else {
-      hidePage(Sonic.pages[i]);
+      hidePage(Kadenz.pages[i]);
     }
   }
-  Sonic.currentIndex = p;
-  loadAnimations(Sonic.pages[Sonic.currentIndex]);
+  Kadenz.currentIndex = p;
+  loadAnimations(Kadenz.pages[Kadenz.currentIndex]);
 }
 
 function nextStep() {
-  if (Sonic.keyframes.length == 0) {
-    if (Sonic.currentIndex >= Sonic.pages.length - 1) {
+  if (Kadenz.keyframes.length == 0) {
+    if (Kadenz.currentIndex >= Kadenz.pages.length - 1) {
       return;
     }
-    Sonic.currentIndex++;
+    Kadenz.currentIndex++;
 
-    var currentPage = Sonic.pages[Sonic.currentIndex - 1];
-    var nextPage = Sonic.pages[Sonic.currentIndex];
+    var currentPage = Kadenz.pages[Kadenz.currentIndex - 1];
+    var nextPage = Kadenz.pages[Kadenz.currentIndex];
     showPage(nextPage);
     animatePage(currentPage, nextPage);
     loadAnimations(nextPage)
   } else {
-    var key = Sonic.keyframes.shift();
+    var key = Kadenz.keyframes.shift();
     applyAnimation(key);
   }
 }
@@ -74,7 +79,7 @@ function prevStep() {
 }
 
 function neutralStyle(page) {
-  page.style.cssText = defaultStyle;
+  page.style.cssText = Kadenz.defaultStyle;
 }
 
 function showPage(page) {
@@ -92,13 +97,13 @@ function animatePage(currentPage, nextPage) {
   if (effect == null) {
     return;
   }
-  var func = SonicPlugins.pageEffect[effect];
+  var func = Kadenz.Plugins.pageEffects[effect];
   if (func == null) {
     console.warn("No such page effect of not resitered : " + effect);
     return
   }
   if (duration == null) {
-    duration = "1000ms";
+    duration = Kadenz.defaultDuration + "ms";
   }
 
   var eventNames = ["transitionEnd", "mozTransitionEnd", "webkitTransitionEnd"];
@@ -140,7 +145,7 @@ function applyAnimation(frame) {
 }
 
 function loadAnimations(page) {
-  Sonic.keyframes = [];
+  Kadenz.keyframes = [];
   var animationNode = page.getElementsByTagName("animation")[0];
   if (animationNode == null) {
     return;
@@ -158,7 +163,7 @@ function loadAnimations(page) {
       console.debug("Property of the animation is not specified.");
       continue;
     }
-    Sonic.keyframes.push({
+    Kadenz.keyframes.push({
       "target": target,
       "css"   : cssToObject(css)
     });
