@@ -30,6 +30,9 @@ Kadenz.Plugins.pageEffects["move_in"] = function (currentPage,
     down  : ["0%", "-100%"],
   })[property.direction];
   if (before == null) {
+    if (property.direction != null) {
+      console.warn("Invalid value of direction: " + property.direction);
+    }
     before = ["100%", "0%"];
   }
   nextPage.style.left = before[0];
@@ -57,6 +60,9 @@ Kadenz.Plugins.pageEffects["push"] = function (currentPage,
   };
   var pos = posPrefix[property.direction];
   if (pos == null) {
+    if (property.direction != null) {
+      console.warn("Invalid value of direction: " + property.direction);
+    }
     pos = posPrefix["left"];
   }
   currentPage.style.left = pos[0];
@@ -104,6 +110,8 @@ Kadenz.Plugins.pageEffects["scale"] = function (currentPage,
   } else if (direction == "down") {
     targetNext = false;
     zoomin = false;
+  } else if (direction != null) {
+    console.warn("Invalid value of direction: " + direction);
   }
 
   if (targetNext) {
