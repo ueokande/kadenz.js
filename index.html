@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>kadenz.js</title>
+    <title>Introduction of kadenz.js</title>
 
     <link href="themes/simple/design.css" rel="stylesheet" type="text/css">
 
@@ -14,20 +14,23 @@
   </head>
 
   <body>
+
     <section class="title">
     <h1>Introduction of kadenz.js</h1>
     <hr />
     <ul>
-      <li>http://i-beam.org/</li>
+      <li><a href="http://github.com/qeexee/kadenz.js/">http://github.com/qeexee/kadenz.js/</a></li>
+      <li>Click or press down.</li>
     </ul>
     </section>
+
 
     <section class="contents" effect="push">
     <h1>What is kadenz.js?</h1>
     <h2>A presentation framework based on HTML</h2>
     <ul>
-      <li>Cross-platform.</li>
-      <li>Gorgeous animations using HTML technology.</li>
+      <li>Cross-platform</li>
+      <li>Gorgeous animations using HTML technology</li>
     </ul>
     <h2>Why use kadenz.js?</h2>
     <ul>
@@ -37,24 +40,189 @@
     </ul>
     </section>
 
-    <section class="contents" effect="push">
-    <h1>Easy to use</h1>
-    <ol>
-      <li>Clone project to your computer.</li>
-      <li>Edit template.</li>
-      <li>View in browser.</li>
-    </ol>
-    <p>more tutorial? see <a href="http://google.com/">tutorial.html</a></p>
-    </section>
 
     <section class="contents" effect="push">
-    <h1>Future works</h1>
-    <ol>
-      <li>Presenter Display</li>
-      <li>Arranging all slides and jumping between pages.</li>
-      <li>More animations (some browser not support 3D-transform in CSS).</li>
-      <li>More cross-platform (undecided for IE).</li>
-    </ol>
+    <h1>How to describe contents</h1>
+    <h2>You can describe as easily as HTML</h2>
+    <ul>
+      <li>Use HTML tags <tt>&lt;h1&gt;</tt> and <tt>&lt;ul&gt;</tt> to write a hierarchized document</li>
+      <li>Sandwich contents between <tt>&lt;contents&gt;</tt> tag</li>
+    </ul>
+    <pre>
+&lt;section class="contents" effect="push"&gt;<br />
+&lt;h1&gt;How to describe contents</h1><br />
+&lt;h2&gt;Write contents as HTML</h2><br />
+&lt;ul&gt;<br />
+  &lt;li&gt;Use HTML tags <tt>&lt;h1&gt;</tt> and <tt>&lt;ul&gt;</tt></li><br />
+  &lt;li&gt;Sandwich contents between <tt>&lt;contents&gt;</tt> tag</li><br />
+&lt;/ul&gt;<br />
+&lt;/section&gt; </pre>
+    </section>
+
+
+    <section class="contents" effect="push">
+    <h1>The Animated Presentation</h1>
+    <h2>Animated page transition</h2>
+    <ul>
+      <li>The page will be changed with animation</li>
+    </ul>
+    <h2>Element animation</h2>
+    <ul>
+      <li>The HTML element will be animated based on css transition</li>
+    </ul>
+    </section>
+
+
+    <section class="contents" effect="push">
+    <h1>Animated page transition</h1>
+    <ul>
+      <li>You can specify the animation of page transition by advanced attributes in <tt>section</tt></li>
+      <li>The property of the animation is described with advanced attributes such as <tt>duration</tt> and <tt>direction</tt></li>
+    </ul>
+    <pre>
+&lt;section effect="move_in" direction="down" duration="2000ms"&gt;<br />
+&lt;!-- Something contents --&gt;<br />
+&lt;/section&gt; </pre>
+    </section>
+
+
+    <section class="contents" effect="move_in" direction="left">
+    <h1>Animated page transition</h1>
+    <p class="large">Move in<br/>&#x2190;</p>
+    </section>
+
+
+    <section class="contents" effect="move_in" direction="up">
+    <h1>Animated page transition</h1>
+    <p class="large">Move in<br/>&#x2191;</p>
+    </section>
+
+
+    <section class="contents" effect="push" direction="right">
+    <h1>Animated page transition</h1>
+    <p class="large">Push<br/>&#x2192;</p>
+    </section>
+
+
+    <section class="contents" effect="push" direction="down">
+    <h1>Animated page transition</h1>
+    <p class="large">Push<br/>&#x2193;</p>
+    </section>
+
+
+    <section class="contents" effect="scale" direction="up">
+    <h1>Animated page transition</h1>
+    <p class="large">Scale<br/>&#x2196;&#x2197;<br/>&#x2199;&#x2198;</p>
+    </section>
+
+
+    <section class="contents" effect="scale" direction="down">
+    <h1>Animated page transition</h1>
+    <p class="large">Scale<br/>&#x2198;&#x2199;<br/>&#x2197;&#x2196;</p>
+    </section>
+
+
+    <section class="contents" effect="push">
+    <h1>Element Animations</h1>
+    <ul>
+      <li>You can describe animations by using advanced tags
+          <strong>animation</strong> and <strong>keyframe</strong></li>
+      <li>A style sheet of the element will be overwritten on animation</li>
+    </ul>
+    <code style="position:absolute; top: 35%; left: 35%">
+      <pre>
+&lt;p style="width: 48px; height: 48px;<br />
+          transition-property: width, height;<br/>
+          background-color:#faa" id="box1"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px; height: 48px;<br />
+          transition-property: width, height;<br/>
+          background-color:#afa" id="box2"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px; height: 48px;<br />
+          transition-property: width, height;<br/>
+          background-color:#aaf" id="box3"&gt;&lt;/p&gt;<br />
+&lt;animation&gt;<br />
+  &lt;keyframe target="box1" css="width: 96px"&gt;<br />
+  &lt;keyframe target="box2" css="height: 96px"&gt;<br />
+  &lt;keyframe target="box3" css="width: 96px;  height: 96px"&gt;<br />
+&lt;/animation&gt; </pre>
+    </code>
+    <p style="width: 48px;
+              height: 48px;
+              transition-property: width, height;
+              background-color:#faa" id="box1"></p>
+    <p style="width: 48px;
+              height: 48px;
+              transition-property: width, height;
+              background-color:#afa" id="box2"></p>
+    <p style="width: 48px;
+              height: 48px;
+              transition-property: width, height;
+              background-color:#aaf" id="box3"></p>
+    <animation>
+      <keyframe target="box1" css="width: 96px" />
+      <keyframe target="box2" css="height: 96px" />
+      <keyframe target="box3" css="width: 96px;  height: 96px" />
+    </animation>
+    <p class="page"></p>
+    </section>
+
+
+    <section class="contents" effect="push">
+    <h1>More Element Animations</h1>
+    <ul>
+      <li>You can use <tt>transition</tt> property in css
+          if you wish to animate a element smoothly</li>
+      <li>Make your animation by combining style sheet :)</li>
+    </ul>
+    <code style="position:absolute; top: 35%; left: 30%">
+      <pre>
+&lt;p style="width: 48px; height: 48px;<br />
+          transition-property: width, height;<br/>
+          transition-duration: 1s;<br />
+          background-color:#afa" id="box4"&gt;&lt;/p&gt;<br />
+&lt;p style="width: 48px; height: 48px;<br />
+          transition-property: width, height;<br/>
+          transition-duration: 1s;<br />
+          background-color:#aaf" id="box5"&gt;&lt;/p&gt;<br />
+&lt;animation&gt;<br />
+  &lt;keyframe target="box4" css="width: 96px;<br />
+                               background-color:red"&gt;<br />
+  &lt;keyframe target="box5" css="-webkit-transform: rotate(90deg)"&gt;<br />
+&lt;/animation&gt;</pre>
+    </code>
+    <p style="width: 48px; height: 48px;
+              background-color:#afa" id="box4"></p>
+    <p style="width: 48px; height: 48px;
+              background-color:#aaf" id="box5"></p>
+    <p style-"" id="text1">zooming</p>
+    <animation>
+      <keyframe target="box4" css="width: 96px;
+                                   transition-property: width, background-color;
+                                   transition-duration: 1s;
+                                   background-color:red" />
+      <keyframe target="box5" css="transition-property: -webkit-transform;
+                                   transition-duration: 1s;
+                                   -webkit-transform: rotate(90deg)" />
+      <keyframe target="text1" css="transition-property: font-size;
+                                    transition-duration: 1s;
+                                    font-size: 200%" />
+    </animation>
+    <p class="page"></p>
+    </section>
+
+
+    <section class="contents" effect="push">
+    <h1>About Development</h1>
+    <ul>
+      <li>The code of this document and script are monolithic for demo</li>
+      <li>The specification might be changed</li>
+    </ul>
+    <h2>Future work</h2>
+    <ul>
+      <li>Presenter Display and tabulated slides</li>
+      <li>Jumping between pages</li>
+      <li>More cross-platform (undecided for IE)</li>
+    </ul>
     </section>
 
   </body>

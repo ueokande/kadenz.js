@@ -8,45 +8,65 @@ body {
   width: 1024px;
   height: 1024px;
   overflow: hidden;
-  font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+  font-family: sans-serif;
   background-color: black;
 }
 
 section {
   position: absolute;
+  margin: 0px 0px;
+  padding: 8px;
   top: 0px;
   left: 0px;
+  font-size: 28pt;
 }
 
 h1 {
-/*  margin: 4pt 18pt; */
   font-size: 40pt;
-  font-family: 'Hiragino Kaku Gothic Std';
+  font-weight: bold;
   color: #3a3a38;
+  margin-bottom: 24px;
 }
 
 h2 {
+  font-size: 28pt;
   color: #1393aa;
-  margin: 18pt 0pt 8px;
-  font-size: 24pt;
-  font-family: 'Hiragino Kaku Gothic Std';
+  margin: 20px 0px 8px;
+  font-weight: bold;
 }
 
 ul {
   list-style-image: url("bullet.svg");
-  margin: 5pt 18pt;
-  font-size: 24pt;
-  font-family: 'Hiragino Kaku Gothic Pro';
+  margin: 20px 28px 50px;
 }
 
 ul li {
-  margin: 8pt 0pt;
+  margin-top: 20px;
+}
+
+ol {
+  margin: 12px 18px;
+  margin-left: 48px;
+}
+
+ol li {
+  margin: 12px 0px;
 }
 
 hr {
   background-color: #3a3a38;
   border: 0 none;
   height: 4px;
+}
+
+pre {
+  background-color: #333;
+  color: white;
+  font-family: "Lucida Console", Monaco, monospace;
+  border-radius: 12px;
+  padding: 16px;
+  line-height: 90%;
+  font-size: 12pt;
 }
 
 section {
@@ -65,7 +85,7 @@ section.title h1 {
 }
 
 section.title ul {
-  margin-left: 0pt;
+  margin-left: 0px;
   list-style: none;
 }
 
@@ -73,14 +93,14 @@ section.contents {
   background-image: url(bg.svg);
   background-repeat: no-repeat;
   background-position-x: center;
-  background-position-y: 72pt;
+  background-position-y: 72px;
 }
 
 section.outline {
   background-image: url(bg.svg);
   background-repeat: no-repeat;
   background-position-x: center;
-  background-position-y: 72pt;
+  background-position-y: 72px;
 }
 
 section.outline ul {
@@ -98,7 +118,6 @@ section.outline ul li {
   color: black;
 }
 
-
 .page {
   position: absolute;
   font-family: 'Hiragino Kaku Gothic Pro';
@@ -107,10 +126,8 @@ section.outline ul li {
   left: 95%;
 }
 
-code {
-  border-radius: 12px;
-  background-color: white;
-  padding: 32px 16px;
-  line-height: 90%;
-  font-size: 12pt;
+p.large {
+  text-align: center;
+  font-size: 160pt;
+  line-height: 80%;
 }
