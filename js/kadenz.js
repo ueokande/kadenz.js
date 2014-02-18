@@ -1,5 +1,5 @@
 window.onload = function() {
-  initPages();
+  Kadenz.Controller.initPages();
 
   registerInput();
 }
@@ -7,17 +7,17 @@ window.onload = function() {
 function registerInput() {
   document.onkeydown = function(e) {
     if (e.keyCode == 38) {
-      prevStep();
+      Kadenz.Controller.prevStep();
     } else if (e.keyCode == 40) {
-      nextStep();
+      Kadenz.Controller.nextStep();
     } else if (e.keyCode == 219) {
-      skipToPrevPage();
+      Kadenz.Controller.skipToPrevPage();
     } else if (e.keyCode == 221) {
-      skipToNextPage();
+      Kadenz.Controller.skipToNextPage();
     }
   };
   document.onclick = function(e) {
-    nextStep();
+    Kadenz.Controller.nextStep();
   };
 }
 
