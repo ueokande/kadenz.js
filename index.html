@@ -174,27 +174,31 @@
           if you wish to animate a element smoothly</li>
       <li>Make your animation by combining style sheet :)</li>
     </ul>
-    <code style="position:absolute; top: 35%; left: 30%">
+    <code style="position:absolute; top: 35%; left: 28%">
       <pre>
-&lt;p style="width: 48px; height: 48px;<br />
-          transition-property: width, height;<br/>
-          transition-duration: 1s;<br />
-          background-color:#afa" id="box4"&gt;&lt;/p&gt;<br />
-&lt;p style="width: 48px; height: 48px;<br />
-          transition-property: width, height;<br/>
-          transition-duration: 1s;<br />
-          background-color:#aaf" id="box5"&gt;&lt;/p&gt;<br />
-&lt;animation&gt;<br />
-  &lt;keyframe target="box4" css="width: 96px;<br />
-                               background-color:red"&gt;<br />
-  &lt;keyframe target="box5" css="-webkit-transform: rotate(90deg)"&gt;<br />
-&lt;/animation&gt;</pre>
+&lt;p style="width: 48px; height: 48px;<br/>
+          background-color:#afa" id="box4"&gt;&lt;/p&gt;<br/>
+&lt;p style="width: 48px; height: 48px;<br/>
+          background-color:#aaf" id="box5"&gt;&lt;/p&gt;<br/>
+&lt;p id="text1"&gt;zooming&lt;/p&gt;<br/>
+&lt;animation&gt;<br/>
+  &lt;keyframe target="box4" css="width: 96px;<br/>
+                               transition-property: width, background-color;<br/>
+                               transition-duration: 1s;<br/>
+                               background-color:red" /&gt;<br/>
+  &lt;keyframe target="box5" css="transition-property: -webkit-transform;<br/>
+                               transition-duration: 1s;<br/>
+                               -webkit-transform: rotate(90deg)" /&gt;<br/>
+  &lt;keyframe target="text1" css="transition-property: font-size;<br/>
+                                transition-duration: 1s;<br/>
+                                font-size: 200%" /&gt;<br/>
+&lt;/animation&gt;</pre><br/>
     </code>
     <p style="width: 48px; height: 48px;
               background-color:#afa" id="box4"></p>
     <p style="width: 48px; height: 48px;
               background-color:#aaf" id="box5"></p>
-    <p style-"" id="text1">zooming</p>
+    <p id="text1">zooming</p>
     <animation>
       <keyframe target="box4" css="width: 96px;
                                    transition-property: width, background-color;
