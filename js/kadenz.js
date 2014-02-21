@@ -10,7 +10,7 @@ Kadenz = {
 };
 
 /*
- * Kadenz interface methods
+ * Initializes the internal variables and HTML contents.
  */
 Kadenz.initPages = function () {
   var pages = document.body.getElementsByTagName("section");
@@ -30,14 +30,23 @@ Kadenz.initPages = function () {
   this.skipToPage(0);
 };
 
+/*
+ * Skips to next page without animation.
+ */
 Kadenz.skipToNextPage = function () {
   this.skipToPage(Kadenz.currentIndex + 1)
 };
 
+/*
+ * Skips to previous page without animation.
+ */
 Kadenz.skipToPrevPage = function () {
   this.skipToPage(Kadenz.currentIndex - 1)
 };
 
+/*
+ * Skips to specified page without animation.
+ */
 Kadenz.skipToPage = function (page) {
   var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
@@ -52,6 +61,9 @@ Kadenz.skipToPage = function (page) {
   Kadenz.keyframes = Kadenz.pages[Kadenz.currentIndex].keyframes();
 };
 
+/*
+ * Animate the element of page to next.
+ */
 Kadenz.nextStep = function () {
   if (Kadenz.keyframes.length == 0) {
     if (Kadenz.currentIndex >= Kadenz.pages.length - 1) {
@@ -70,9 +82,15 @@ Kadenz.nextStep = function () {
   }
 };
 
+/*
+ * Skip to previous step of page.
+ */
 Kadenz.prevStep = function () {
 };
 
+/*
+ * Animates the pages from `currentPage` to `nextPage`.
+ */
 Kadenz.animatePage = function (currentPage, nextPage) {
   var effect = nextPage.getAttribute("effect");
   var duration = nextPage.getAttribute("duration");
@@ -102,10 +120,10 @@ Kadenz.animatePage = function (currentPage, nextPage) {
   func(currentPage.element, nextPage.element, duration, property);
 };
 
-/* convert time specified by string to millisecond
+/* Converts time descrived as string to millisecond
  * timeToMs("200ms")    // return 200
- * timeToMs("5s")    // return 2000
- * timeToMs("1.4s")    // return 1400
+ * timeToMs("5s")       // return 5000
+ * timeToMs("1.4s")     // return 1400
  */
 Kadenz.timeToMsa = function (time) {
   var ms = time.split("ms");
