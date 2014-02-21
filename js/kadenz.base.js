@@ -13,7 +13,7 @@
  *  Constructs a Keyframe object with the given element which is a element
  *  contained in <keyframe>.
  */
-Kadenz.Keyframe = function (ele) {
+Kadenz.Keyframe = function(ele) {
   this.element = ele;
 }
 
@@ -21,14 +21,14 @@ Kadenz.Keyframe.prototype = {
   /*
    * Returns the target of the keyframe
    */
-  target : function () {
+  target : function() {
     return this.element.getAttribute("target");
   },
 
   /*
    * Return the css property to apply to the target
    */
-  css : function () {
+  css : function() {
     cssText = this.element.getAttribute("css");
     var ret = {};
     cssText = cssText.replace(/\s/g, '');
@@ -43,7 +43,7 @@ Kadenz.Keyframe.prototype = {
   /*
    * Apply properties to the target
    */
-  start : function () {
+  start : function() {
     var targetEle = document.getElementById(this.target());
     if (targetEle == null) {
         console.warn("The animation target '" + targetEle + "' is not existing.");
@@ -70,7 +70,7 @@ Kadenz.Keyframe.prototype = {
 /*
  * Constructs a Page object with the given <section> element.
  */
-Kadenz.Page = function (elem) {
+Kadenz.Page = function(elem) {
   this.element = elem;
   this.defaultCss = elem.cssText;
 };
@@ -81,7 +81,7 @@ Kadenz.Page.prototype = {
    * The actual behavior is adding the number into internalHTML in the element
    * which is set an attribute `class` as `page`.
    */
-  setPageNum : function (num) {
+  setPageNum : function(num) {
     for (var i = 0; i < this.element.length; ++i) {
       var ele = page.children[i];
       if (ele.classList.contains('page')) {
@@ -93,35 +93,35 @@ Kadenz.Page.prototype = {
   /*
    * Resets the css of the element
    */
-  neutralStyle : function (page) {
+  neutralStyle : function(page) {
     this.element.style.cssText = this.defaultCss;
   },
 
   /*
    * Sets the `visibility` style as `visible`.
    */
-  show : function (page) {
+  show : function(page) {
     this.element.style.visibility = "visible";
   },
 
   /*
    * Sets the `visibility` style as `hidden`.
    */
-  hide : function (page) {
+  hide : function(page) {
     this.element.style.visibility = "hidden";
   },
 
   /*
    * Returns the value of the attribute specified `name`.
    */
-  getAttribute : function (name) {
+  getAttribute : function(name) {
     return this.element.getAttribute(name);
   },
 
   /*
    * Returns all attributes.
    */
-  attributes : function () {
+  attributes : function() {
     var obj = {};
     var attrs = this.element.attributes;
     for (i = 0, len = attrs.length; i < len; ++i) {
@@ -137,7 +137,7 @@ Kadenz.Page.prototype = {
   /*
    * Returns all keyframes contained in <animation> node as Keyframe object.
    */
-  keyframes : function () {
+  keyframes : function() {
     var animationNode = this.element.getElementsByTagName("animation")[0];
     if (animationNode == null) {
       return [];

@@ -7,10 +7,10 @@
  *     up ... Top to Bottom
  *     down ... Bottom to Top
  */
-Kadenz.Plugins.pageEffects["dissolve"] = function (currentPage,
-                                                   nextPage,
-                                                   duration,
-                                                   property) {
+Kadenz.Plugins.pageEffects["dissolve"] = function(currentPage,
+                                                  nextPage,
+                                                  duration,
+                                                  property) {
   nextPage.style.opacity = "0";
   setTimeout(function() {
     nextPage.style.transitionProperty = "opacity";
@@ -28,10 +28,10 @@ Kadenz.Plugins.pageEffects["dissolve"] = function (currentPage,
  *     up ... Top to Bottom
  *     down ... Bottom to Top
  */
-Kadenz.Plugins.pageEffects["move_in"] = function (currentPage,
-                                                  nextPage,
-                                                  duration,
-                                                  property) {
+Kadenz.Plugins.pageEffects["move_in"] = function(currentPage,
+                                                 nextPage,
+                                                 duration,
+                                                 property) {
   var before = ({
     left  : ["100%", "0%"],
     right : ["-100%", "0%"],
@@ -63,10 +63,10 @@ Kadenz.Plugins.pageEffects["move_in"] = function (currentPage,
  *     up      ... Top to Bottom
  *     down    ... Bottom to Top
  */
-Kadenz.Plugins.pageEffects["push"] = function (currentPage,
-                                               nextPage,
-                                               duration,
-                                               property) {
+Kadenz.Plugins.pageEffects["push"] = function(currentPage,
+                                              nextPage,
+                                              duration,
+                                              property) {
   var posPrefix = {
     left  : ["0%", "0%", "100%", "0%", "-100%", "0%", "0%", "0%"],
     right : ["0%", "0%", "-100%", "0%", "100%", "0%", "0%", "0%"],
@@ -105,10 +105,10 @@ Kadenz.Plugins.pageEffects["push"] = function (currentPage,
  *     in
  *     out
  */
-Kadenz.Plugins.pageEffects["scale"] = function (currentPage,
-                                                nextPage,
-                                                duration,
-                                                property) {
+Kadenz.Plugins.pageEffects["scale"] = function(currentPage,
+                                               nextPage,
+                                               duration,
+                                               property) {
   var direction = property.direction;
   var targetNext = true;   // A target of the animation is next slide when true
   var zoomin = true;       // Zooming is zoom-in when true
