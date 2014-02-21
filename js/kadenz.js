@@ -91,6 +91,7 @@ Kadenz.nextStep = function() {
  * Skip to previous step of page.
  */
 Kadenz.prevStep = function() {
+  this.skipToPrevPage();
 };
 
 /*
