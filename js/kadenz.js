@@ -3,7 +3,7 @@ Kadenz = {
     pageEffects : {}
   },
 
-  currentIndex: 0,
+  currentIndex: -1,
   pages: [],
   keyframes: [],
   defaultDuration: 1000
@@ -48,6 +48,9 @@ Kadenz.skipToPrevPage = function () {
  * Skips to specified page without animation.
  */
 Kadenz.skipToPage = function (page) {
+  if (page == Kadenz.currentIndex) {
+    return;
+  }
   var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
   for (var i = 0; i < len; ++i) {
@@ -59,6 +62,7 @@ Kadenz.skipToPage = function (page) {
   }
   Kadenz.currentIndex = p;
   Kadenz.keyframes = Kadenz.pages[Kadenz.currentIndex].keyframes();
+  location.hash = "#" + (Kadenz.currentIndex + 1);
 };
 
 /*
@@ -70,6 +74,7 @@ Kadenz.nextStep = function () {
       return;
     }
     Kadenz.currentIndex++;
+    location.hash = "#" + (Kadenz.currentIndex + 1);
 
     var currentPage = Kadenz.pages[Kadenz.currentIndex - 1];
     var nextPage = Kadenz.pages[Kadenz.currentIndex];

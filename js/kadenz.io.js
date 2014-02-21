@@ -25,5 +25,11 @@ window.onclick = function(e) {
   Kadenz.nextStep();
 };
 
-window.hashchange = function (e) {
-};
+window.onhashchange = function (e) {
+  var hash = e.newURL.split("#");
+  var num = Math.max(0, (~~hash[1]) - 1);
+  if (num == -1) {
+    return;
+  }
+  Kadenz.skipToPage(num);
+}
