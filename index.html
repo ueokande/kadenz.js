@@ -128,89 +128,32 @@
     <ul>
       <li>You can describe animations by using advanced tags
           <strong>animation</strong> and <strong>keyframe</strong></li>
-      <li>A style sheet of the element will be overwritten on animation</li>
+      <li>A style of the element will be overwritten on animaton</li>
     </ul>
-    <code style="position:absolute; top: 35%; left: 35%">
+    <code style="position:absolute; top: 45%; left: 40%">
       <pre>
 &lt;p style="width: 48px; height: 48px;<br />
-          transition-property: width, height;<br/>
-          background-color:#faa" id="box1"&gt;&lt;/p&gt;<br />
+          background-color:#afa" id="box4"&gt;&lt;/p&gt;<br />
 &lt;p style="width: 48px; height: 48px;<br />
-          transition-property: width, height;<br/>
-          background-color:#afa" id="box2"&gt;&lt;/p&gt;<br />
-&lt;p style="width: 48px; height: 48px;<br />
-          transition-property: width, height;<br/>
-          background-color:#aaf" id="box3"&gt;&lt;/p&gt;<br />
+          background-color:#aaf" id="box5"&gt;&lt;/p&gt;<br />
+&lt;p id="txt1"&gt;zooming&lt;/p&gt;<br />
 &lt;animation&gt;<br />
-  &lt;keyframe target="box1" css="width: 96px"&gt;<br />
-  &lt;keyframe target="box2" css="height: 96px"&gt;<br />
-  &lt;keyframe target="box3" css="width: 96px;  height: 96px"&gt;<br />
+  &lt;keyframe target="box4" duration="1s" width="96px"<br />
+            background-color="red" /&gt;<br />
+  &lt;keyframe target="box5" duration="1s" <br />
+            -webkit-transform="rotate(90deg)" /&gt;<br />
+  &lt;keyframe target="txt1" duration="1s" font-size="200%" /&gt;<br />
 &lt;/animation&gt; </pre>
-    </code>
-    <p style="width: 48px;
-              height: 48px;
-              transition-property: width, height;
-              background-color:#faa" id="box1"></p>
-    <p style="width: 48px;
-              height: 48px;
-              transition-property: width, height;
-              background-color:#afa" id="box2"></p>
-    <p style="width: 48px;
-              height: 48px;
-              transition-property: width, height;
-              background-color:#aaf" id="box3"></p>
-    <animation>
-      <keyframe target="box1" css="width: 96px" />
-      <keyframe target="box2" css="height: 96px" />
-      <keyframe target="box3" css="width: 96px;  height: 96px" />
-    </animation>
-    <p class="page"></p>
-    </section>
-
-
-    <section effect="push">
-    <h1>More Element Animations</h1>
-    <ul>
-      <li>You can use <tt>transition</tt> property in css
-          if you wish to animate a element smoothly</li>
-      <li>Make your animation by combining style sheet :)</li>
-    </ul>
-    <code style="position:absolute; top: 35%; left: 28%">
-      <pre>
-&lt;p style="width: 48px; height: 48px;<br/>
-          background-color:#afa" id="box4"&gt;&lt;/p&gt;<br/>
-&lt;p style="width: 48px; height: 48px;<br/>
-          background-color:#aaf" id="box5"&gt;&lt;/p&gt;<br/>
-&lt;p id="text1"&gt;zooming&lt;/p&gt;<br/>
-&lt;animation&gt;<br/>
-  &lt;keyframe target="box4" css="width: 96px;<br/>
-                               transition-property: width, background-color;<br/>
-                               transition-duration: 1s;<br/>
-                               background-color:red" /&gt;<br/>
-  &lt;keyframe target="box5" css="transition-property: -webkit-transform;<br/>
-                               transition-duration: 1s;<br/>
-                               -webkit-transform: rotate(90deg)" /&gt;<br/>
-  &lt;keyframe target="text1" css="transition-property: font-size;<br/>
-                                transition-duration: 1s;<br/>
-                                font-size: 200%" /&gt;<br/>
-&lt;/animation&gt;</pre><br/>
     </code>
     <p style="width: 48px; height: 48px;
               background-color:#afa" id="box4"></p>
     <p style="width: 48px; height: 48px;
               background-color:#aaf" id="box5"></p>
-    <p id="text1">zooming</p>
+    <p id="txt1">zooming</p>
     <animation>
-      <keyframe target="box4" css="width: 96px;
-                                   transition-property: width, background-color;
-                                   transition-duration: 1s;
-                                   background-color:red" />
-      <keyframe target="box5" css="transition-property: -webkit-transform;
-                                   transition-duration: 1s;
-                                   -webkit-transform: rotate(90deg)" />
-      <keyframe target="text1" css="transition-property: font-size;
-                                    transition-duration: 1s;
-                                    font-size: 200%" />
+      <keyframe target="box4" duration="1s" width="96px" background-color="red" />
+      <keyframe target="box5" duration="1s" -webkit-transform="rotate(90deg)" />
+      <keyframe target="txt1" duration="1s" font-size="200%" />
     </animation>
     <p class="page"></p>
     </section>

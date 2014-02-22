@@ -118,6 +118,7 @@ Kadenz.animatePage = function(currentPage, nextPage) {
     currentPage.element.addEventListener(eventNames[i], function(e) {
       currentPage.neutralStyle();
       currentPage.hide();
+      Kadenz.Keyframe.neutralCss();
     }, false );
     nextPage.element.addEventListener(eventNames[i], function(e) {
       nextPage.neutralStyle();

@@ -19,25 +19,30 @@ Kadenz.Keyframe = function(ele) {
 
 Kadenz.Keyframe.prototype = {
   /*
-   * Returns the target of the keyframe
+   * Returns the target of the keyframe.
    */
   target : function() {
     return this.element.getAttribute("target");
   },
 
   /*
-   * Return the css property to apply to the target
+   * Returns the duration of the animation as text.  Return null If the
+   * duration is note speficied.
    */
-  css : function() {
-    cssText = this.element.getAttribute("css");
-    var ret = {};
-    cssText = cssText.replace(/\s/g, '');
-    var attrs = cssText.split(';');
-    for (var i = 0; i < attrs.length; ++i) {
-      var entry = attrs[i].split(':');
-      ret[entry[0]] = entry[1];
+  duration : function() {
+    return this.element.getAttribute("duration");
+  },
+
+  properties : function() {
+    var obj = {};
+    var attrs = this.element.attributes;
+    for (i = 0, len = attrs.length; i < len; ++i) {
+      var it = attrs.item(i);
+      if (it.nodeName != "target" && it.nodeName != "duration") {
+        obj[it.nodeName] = it.value;
+      }
     }
-    return ret;
+    return obj;
   },
 
   /*
@@ -46,18 +51,43 @@ Kadenz.Keyframe.prototype = {
   start : function() {
     var targetEle = document.getElementById(this.target());
     if (targetEle == null) {
-        console.warn("The animation target '" + targetEle + "' is not existing.");
+        console.warn("The animation target '" + this.target() + "' is not existing.");
         return;
     }
-    var css = this.css();
-    if (css != null) {
-      for (k in css) {
-        targetEle.style[k] = css[k];
+    Kadenz.Keyframe.addCss(targetEle);
+    var duration = this.duration();
+    if (duration != null) {
+      targetEle.style.transitionDuration = duration;
+    }
+    var properties = this.properties();
+    for (k in properties) {
+      var v = properties[k];
+      if (targetEle.style.transitionProperty.length == 0) {
+        targetEle.style.transitionProperty = v
+      } else {
+        targetEle.style.transitionProperty = targetEle.style.transitionProperty + "," + v;
       }
+      targetEle.style[k] = v;
     }
   }
 }
 
+
+Kadenz.Keyframe.cssCache = {};
+
+Kadenz.Keyframe.addCss= function(ele) {
+    if (!(ele.id in Kadenz.Keyframe.cssCache)) {
+      Kadenz.Keyframe.cssCache[ele.id] = ele.style.cssText;
+    }
+}
+
+Kadenz.Keyframe.neutralCss = function() {
+  for (k in this.cssCache) {
+    var ele = document.getElementById(k);
+    ele.style.cssText = this.cssCache[k];
+    delete this.cssCache[k];
+  }
+}
 
 /*
  *  Kadenz.Page class
