@@ -27,7 +27,10 @@ Kadenz.initPages = function() {
     page.setPageNum(i + 1);
   }
 
-  this.skipToPage(0);
+  // TODO: Divide to call a member method of window, and core implementation
+  var hash = window.location.hash.split("#");
+  var num = Math.max(0, (~~hash[1]) - 1);
+  this.skipToPage(num);
 };
 
 /*
