@@ -107,20 +107,6 @@ Kadenz.Page = function(elem) {
 
 Kadenz.Page.prototype = {
   /*
-   * Sets the page number of the slide.
-   * The actual behavior is adding the number into internalHTML in the element
-   * which is set an attribute `class` as `page`.
-   */
-  setPageNum : function(num) {
-    for (var i = 0; i < this.element.length; ++i) {
-      var ele = page.children[i];
-      if (ele.classList.contains('page')) {
-        ele.innerHTML = i + 1;
-      }
-    }
-  },
-
-  /*
    * Resets the css of the element
    */
   neutralStyle : function(page) {
