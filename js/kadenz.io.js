@@ -32,5 +32,5 @@ window.addEventListener("hashchange", function(e){
   if (num == -1) {
     return;
   }
-  Kadenz.skipToPage(num);
+  Kadenz.skipToPage(num, false);
 });

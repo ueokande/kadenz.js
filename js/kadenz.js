@@ -48,11 +48,16 @@ Kadenz.skipToPrevPage = function() {
 };
 
 /*
- * Skips to specified page without animation.
+ * Skips to specified page without animation.  Updates a hash in URL if
+ * updateHash is true or omitted.  Note that you must NOT call this function
+ * with updateHash with true because it might be inifinite loop.
  */
-Kadenz.skipToPage = function(page) {
+Kadenz.skipToPage = function(page, updateHash) {
   if (page == Kadenz.currentIndex) {
     return;
+  }
+  if (updateHash == null) {
+    updateHash = true;
   }
   var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
@@ -65,7 +70,9 @@ Kadenz.skipToPage = function(page) {
   }
   Kadenz.currentIndex = p;
   Kadenz.keyframes = Kadenz.pages[Kadenz.currentIndex].keyframes();
-  location.hash = "#" + (Kadenz.currentIndex + 1);
+  if (updateHash) {
+    location.hash = "#" + (Kadenz.currentIndex + 1);
+  }
 };
 
 /*
