@@ -11,14 +11,24 @@ window.addEventListener("keypress", function(e){
 });
 
 window.addEventListener("keydown", function(e){
-  if (e.keyCode == 38) {        // Arrow up
-    Kadenz.prevStep();
-  } else if (e.keyCode == 40) { // Arrow down
+  // TODO: Added Enter key but the Enter is conflicted to kadenz.pager.
+  switch (e.keyCode) {
+  // case 13:    // Enter
+  case 32:    // Space
+  case 40:    // Arrow Down
+  case 34:    // Page Down
     Kadenz.nextStep();
-  } else if (e.keyCode == 33) { // Page up
-    Kadenz.skipToPrevPage();
-  } else if (e.keyCode == 34) { // Page down
-    Kadenz.skipToNextPage();
+    break;
+  case 38:    // Arrow Up
+  case 33:    // Page Up
+    Kadenz.prevStep();
+    break;
+  case 36:    // Home
+    Kadenz.skipToPage(0);
+    break;
+  case 35:    // End
+    Kadenz.skipToPage(Kadenz.pages.length - 1);
+    break;
   }
 });
 
