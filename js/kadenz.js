@@ -57,7 +57,7 @@ Kadenz.skipToPage = function(page) {
   var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
   for (var i = 0; i < len; ++i) {
-    if (i <= p) {
+    if (i == p) {
       Kadenz.pages[i].show();
     } else {
       Kadenz.pages[i].hide();
@@ -105,6 +105,7 @@ Kadenz.animatePage = function(currentPage, nextPage) {
   var duration = nextPage.getAttribute("duration");
   var property = nextPage.attributes();
   if (effect == null) {
+    currentPage.hide();
     return;
   }
   var func = Kadenz.Plugins.pageEffects[effect];
