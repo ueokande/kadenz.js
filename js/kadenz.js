@@ -58,6 +58,7 @@ Kadenz.skipToPage = function(page, updateHash) {
   if (updateHash == null) {
     updateHash = true;
   }
+  Kadenz.Keyframe.neutralCss();
   var len = Kadenz.pages.length;
   p = Math.min(Math.max(page,0), len - 1);
   for (var i = 0; i < len; ++i) {
@@ -123,17 +124,11 @@ Kadenz.animatePage = function(currentPage, nextPage) {
     duration = Kadenz.defaultDuration + "ms";
   }
 
-  var eventNames = ["transitionEnd", "mozTransitionEnd", "webkitTransitionEnd"];
-  for (i = 0; i < eventNames.length; ++i) {
-    currentPage.element.addEventListener(eventNames[i], function(e) {
+  setTimeout(function() {
       currentPage.neutralStyle();
       currentPage.hide();
-      Kadenz.Keyframe.neutralCss();
-    }, false );
-    nextPage.element.addEventListener(eventNames[i], function(e) {
       nextPage.neutralStyle();
-    }, false );
-  }
+  }, this.timeToMs(duration))
   func(currentPage.element, nextPage.element, duration, property);
 };
 
@@ -142,7 +137,7 @@ Kadenz.animatePage = function(currentPage, nextPage) {
  * timeToMs("5s")       // return 5000
  * timeToMs("1.4s")     // return 1400
  */
-Kadenz.timeToMsa = function(time) {
+Kadenz.timeToMs = function(time) {
   var ms = time.split("ms");
   if (ms.length == 2) {
     return ms[0];
