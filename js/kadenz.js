@@ -26,7 +26,6 @@ Kadenz.initPages = function() {
     var page = Kadenz.pages[i];
   }
 
-  Kadenz.Pagenum.addNumber();
   // TODO: Divide to call a member method of window, and core implementation
   var hash = window.location.hash.split("#");
   var num = Math.max(0, (~~hash[1]) - 1);
