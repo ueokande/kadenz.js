@@ -100,18 +100,3 @@ p.large {
   line-height: 80%;
 }
 
-/* TODO: divide basic style such as page number to basis */
-/*
- * Page numbers
- */
-body {
-  counter-reset: pagecounter;
-}
-
-section {
-  counter-increment: pagecounter;
-}
-
-p.pagenum:before {
-  content: counter(pagecounter);
-}

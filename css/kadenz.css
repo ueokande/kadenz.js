@@ -1,0 +1,14 @@
+/*
+ * Page numbers
+ */
+body {
+  counter-reset: pagecounter;
+}
+
+section {
+  counter-increment: pagecounter;
+}
+
+p.pagenum:before {
+  content: counter(pagecounter);
+}
