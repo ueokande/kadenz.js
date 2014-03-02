@@ -1,11 +1,13 @@
-/*
- * Page numbers
- */
 body {
+  overflow: hidden;
   counter-reset: pagecounter;
 }
 
 section {
+  margin: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   counter-increment: pagecounter;
 }
 
