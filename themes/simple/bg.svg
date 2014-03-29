@@ -6,8 +6,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="988"
-   height="643" >
-  <rect width="988" height="643" ry="16" x="0" y="0" style="fill:#f9f6eb" />
+   width="1024"
+   height="768" >
+  <rect width="1024" height="768" x="0" y="0" style="fill:#cbd3c5" />
+  <rect width="988" height="678" ry="16" x="18" y="72" style="fill:#f9f6eb" />
 </svg>
 

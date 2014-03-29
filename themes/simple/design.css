@@ -52,8 +52,7 @@ section {
   font-size: 28pt;
   background-image: url(bg.svg);
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 72px;
+  background-position: center;
   background-color: #cbd3c5;
   width: 1024px;
   height: 768px;
