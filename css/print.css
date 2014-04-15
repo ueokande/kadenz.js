@@ -1,0 +1,10 @@
+body {
+  -webkit-print-color-adjust:exact;
+}
+
+section {
+  visibility: visible !important;
+  position: relative !important;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
