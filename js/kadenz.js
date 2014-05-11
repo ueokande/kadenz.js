@@ -173,6 +173,7 @@ Kadenz.Keyframe = function(ele) {
 }
 
 /*
+ * The enumeration variables for the timing of keyframes.
  */
 Kadenz.Keyframe.TIMING_CLICK = 0;
 Kadenz.Keyframe.TIMING_WITH  = 1,
@@ -196,6 +197,8 @@ Kadenz.Keyframe.prototype = {
   },
 
   /*
+   * Returns the timing of the animation as int (defined in
+   * Kadenz.Keyframe.TIMING_*)
    */
   timing : function() {
     timing_string = this.element.getAttribute("timing");
