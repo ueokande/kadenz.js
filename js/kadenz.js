@@ -88,8 +88,15 @@ Kadenz.nextStep = function() {
     this.animatePage(currentPage, nextPage);
     Kadenz.keyframes = nextPage.keyframes();
   } else {
-    var key = Kadenz.keyframes.shift();
-    key.start();
+    var keys = [];
+    keys.push(Kadenz.keyframes.shift());
+    while (Kadenz.keyframes.length != 0 &&
+           Kadenz.keyframes[0].timing() == Kadenz.Keyframe.TIMING_WITH) {
+      keys.push(Kadenz.keyframes.shift());
+    }
+    while (keys.length != 0) {
+      keys.shift().start();
+    }
   }
 };
 
@@ -165,7 +172,14 @@ Kadenz.Keyframe = function(ele) {
   this.element = ele;
 }
 
+/*
+ */
+Kadenz.Keyframe.TIMING_CLICK = 0;
+Kadenz.Keyframe.TIMING_WITH  = 1,
+Kadenz.Keyframe.TIMING_AFTER = 2,
+
 Kadenz.Keyframe.prototype = {
+
   /*
    * Returns the target of the keyframe.
    */
@@ -179,6 +193,22 @@ Kadenz.Keyframe.prototype = {
    */
   duration : function() {
     return this.element.getAttribute("duration");
+  },
+
+  /*
+   */
+  timing : function() {
+    timing_string = this.element.getAttribute("timing");
+    if (timing_string == null || timing_string == "click") {
+      return Kadenz.Keyframe.TIMING_CLICK;
+    } else if (timing_string == "after") {
+      return Kadenz.Keyframe.TIMING_AFTER;
+    } else if (timing_string == "with") {
+      return Kadenz.Keyframe.TIMING_WITH;
+    } else {
+      console.warn("The animation timing '" + timing_string + "' is invalid.");
+      return Kadenz.Keyframe.TIMING_CLICK;
+    }
   },
 
   properties : function() {
