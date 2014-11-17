@@ -1,3 +1,5 @@
+# The project had been migrated to (Scena.js)[https://github.com/iBenza/Scena.js].
+
 kadenz.js - The presentation framework based on HTML.
 
 Copyright (c) 2014 Shin'ya Ueoka
