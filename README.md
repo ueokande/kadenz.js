@@ -1,4 +1,4 @@
-# The project had been migrated to Scena.js
+# The project had been ported to Scena.js
 * https://github.com/iBenza/Scena.js
 
 # kadenz.js - The presentation framework based on HTML.
